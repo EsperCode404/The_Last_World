@@ -216,20 +216,20 @@ function init() {
 controls = new THREE.OrbitControls(camera, renderer.domElement);
 
 // Make these adjustments:
-controls.zoomSpeed = 0.05;  // Even slower zoom (was 0.5)
+controls.zoomSpeed = 0.01;  // Even slower zoom (was 0.5)
 controls.enableDamping = true;
-controls.dampingFactor = 0.15;  // More damping for smoother stops
+controls.dampingFactor = 0.25;  // More damping for smoother stops
 controls.enableZoom = true;
 controls.enablePan = true;
 
 // Touch-specific settings
-controls.touchZoomSpeed = 0.05;  // Much slower touch zoom (was 0.5)
-controls.touchDampingFactor = 0.2;  // Smoother touch movement
+controls.touchZoomSpeed = 0.01;  // Much slower touch zoom (was 0.5)
+controls.touchDampingFactor = 0.25;  // Smoother touch movement
 controls.touchRotateSpeed = 0.3;  // Slower rotation on touch
 
 // For mobile devices specifically
 if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    controls.zoomSpeed = 0.05;  // Even slower for mobile
+    controls.zoomSpeed = 0.01;  // Even slower for mobile
     controls.touchZoomSpeed = 0.1;  // Very slow pinch-to-zoom
     controls.panSpeed = 0.3;  // Slower panning
     controls.rotateSpeed = 0.3;  // Slower rotation
