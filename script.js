@@ -229,14 +229,15 @@ controls.touchRotateSpeed = 0.3;  // Slower rotation on touch
 
 // For mobile devices specifically
 if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    controls.zoomSpeed = 0.001;  // Even slower for mobile
-    controls.touchZoomSpeed = 0.1;  // Very slow pinch-to-zoom
-    controls.panSpeed = 0.3;  // Slower panning
-    controls.rotateSpeed = 0.3;  // Slower rotation
+    controls.zoomSpeed = 0.0005;  // Even slower for mobile
+    controls.touchZoomSpeed = 0.05;  // Very slow pinch-to-zoom
+    controls.panSpeed = 0.2;  // Slower panning
+    controls.rotateSpeed = 0.2;  // Slower rotation
     controls.minDistance = 40;  // Don't zoom too close
     controls.maxDistance = 800;  // Don't zoom too far
     controls.enableDamping = true;
-    controls.dampingFactor = 0.25;
+    controls.dampingFactor = 0.35;
+    controls.touchDampingFactor = 0.4; // Even more resistance for touch
 }
 
 // Add event listener to handle touch events better
