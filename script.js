@@ -216,14 +216,14 @@ function init() {
 controls = new THREE.OrbitControls(camera, renderer.domElement);
 
 // Make these adjustments:
-controls.zoomSpeed = 0.3;  // Even slower zoom (was 0.5)
+controls.zoomSpeed = 0.1;  // Even slower zoom (was 0.5)
 controls.enableDamping = true;
 controls.dampingFactor = 0.15;  // More damping for smoother stops
 controls.enableZoom = true;
 controls.enablePan = true;
 
 // Touch-specific settings
-controls.touchZoomSpeed = 0.2;  // Much slower touch zoom (was 0.5)
+controls.touchZoomSpeed = 0.1;  // Much slower touch zoom (was 0.5)
 controls.touchDampingFactor = 0.2;  // Smoother touch movement
 controls.touchRotateSpeed = 0.3;  // Slower rotation on touch
 
@@ -246,7 +246,7 @@ renderer.domElement.addEventListener('touchstart', (e) => {
         e.preventDefault();
     }
 }, { passive: false });
-    
+
     // Create scene elements
     createSkybox();
     createStars();
