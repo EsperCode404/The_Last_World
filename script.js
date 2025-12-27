@@ -212,33 +212,40 @@ function init() {
     
     // Set up controls
     // In the init() function, after creating the controls:
+// In your OrbitControls configuration:
 controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+// Make these adjustments:
+controls.zoomSpeed = 0.3;  // Even slower zoom (was 0.5)
 controls.enableDamping = true;
-controls.dampingFactor = 0.1;  // Increased damping for smoother movement
-controls.enablePan = true;
+controls.dampingFactor = 0.15;  // More damping for smoother stops
 controls.enableZoom = true;
-controls.zoomSpeed = 0.5;  // Slower zoom speed
-controls.rotateSpeed = 0.5;  // Slower rotation speed
-controls.panSpeed = 0.5;  // Slower panning speed
-controls.screenSpacePanning = true;
-controls.minDistance = 30;
-controls.maxDistance = 1000;  // Increased max distance
-controls.autoRotate = false;
-controls.target.set(0, 0, 0);
+controls.enablePan = true;
 
-// Add touch screen support
-controls.touchZoomSpeed = 0.5;  // Slower touch zoom
-controls.touchRotateSpeed = 0.5;  // Slower touch rotation
-controls.touchDampingFactor = 0.1;  // Smoother touch movement
+// Touch-specific settings
+controls.touchZoomSpeed = 0.2;  // Much slower touch zoom (was 0.5)
+controls.touchDampingFactor = 0.2;  // Smoother touch movement
+controls.touchRotateSpeed = 0.3;  // Slower rotation on touch
 
-// For touch devices, we'll add some additional smoothing
-if ('ontouchstart' in window) {
+// For mobile devices specifically
+if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    controls.zoomSpeed = 0.15;  // Even slower for mobile
+    controls.touchZoomSpeed = 0.1;  // Very slow pinch-to-zoom
+    controls.panSpeed = 0.3;  // Slower panning
+    controls.rotateSpeed = 0.3;  // Slower rotation
+    controls.minDistance = 40;  // Don't zoom too close
+    controls.maxDistance = 800;  // Don't zoom too far
     controls.enableDamping = true;
-    controls.dampingFactor = 0.2;
-    controls.zoomSpeed = 0.3;
-    controls.rotateSpeed = 0.3;
-    controls.panSpeed = 0.3;
+    controls.dampingFactor = 0.25;
 }
+
+// Add event listener to handle touch events better
+renderer.domElement.addEventListener('touchstart', (e) => {
+    // Prevent default to avoid page scroll on touch devices
+    if (e.touches.length === 2) {
+        e.preventDefault();
+    }
+}, { passive: false });
     
     // Create scene elements
     createSkybox();
