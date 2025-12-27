@@ -211,17 +211,34 @@ function init() {
     camera.position.z = 200;
     
     // Set up controls
-    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    // In the init() function, after creating the controls:
+controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.1;  // Increased damping for smoother movement
+controls.enablePan = true;
+controls.enableZoom = true;
+controls.zoomSpeed = 0.5;  // Slower zoom speed
+controls.rotateSpeed = 0.5;  // Slower rotation speed
+controls.panSpeed = 0.5;  // Slower panning speed
+controls.screenSpacePanning = true;
+controls.minDistance = 30;
+controls.maxDistance = 1000;  // Increased max distance
+controls.autoRotate = false;
+controls.target.set(0, 0, 0);
+
+// Add touch screen support
+controls.touchZoomSpeed = 0.5;  // Slower touch zoom
+controls.touchRotateSpeed = 0.5;  // Slower touch rotation
+controls.touchDampingFactor = 0.1;  // Smoother touch movement
+
+// For touch devices, we'll add some additional smoothing
+if ('ontouchstart' in window) {
     controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
-    controls.enablePan = true;
-    controls.enableZoom = true;
-    controls.enableRotate = true;
-    controls.screenSpacePanning = true;
-    controls.minDistance = 30;
-    controls.maxDistance = 500;
-    controls.autoRotate = false;
-    controls.target.set(0, 0, 0);
+    controls.dampingFactor = 0.2;
+    controls.zoomSpeed = 0.3;
+    controls.rotateSpeed = 0.3;
+    controls.panSpeed = 0.3;
+}
     
     // Create scene elements
     createSkybox();
