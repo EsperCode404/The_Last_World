@@ -229,7 +229,7 @@ controls.touchRotateSpeed = 0.3;  // Slower rotation on touch
 
 // For mobile devices specifically
 if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    controls.zoomSpeed = 0.15;  // Even slower for mobile
+    controls.zoomSpeed = 0.1;  // Even slower for mobile
     controls.touchZoomSpeed = 0.1;  // Very slow pinch-to-zoom
     controls.panSpeed = 0.3;  // Slower panning
     controls.rotateSpeed = 0.3;  // Slower rotation
